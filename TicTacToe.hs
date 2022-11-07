@@ -1,3 +1,4 @@
+{-# LANGUAGE BangPatterns #-}
 module TicTacToe where
 
 import Data.Char
