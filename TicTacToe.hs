@@ -100,11 +100,16 @@ tryMove mark (x,y) (ps,size)
 -- I/O Functions
 
 replacePrint :: String -> String
-replacePrint [] = []
-replacePrint (c:cs)
-  | c == '[' || c == ']' = replacePrint cs
-  | c == ','             = " " ++ replacePrint cs
-  | otherwise            = c : replacePrint cs
+replacePrint x
+  = reverse (replacePrint' x "")
+  where
+    replacePrint' [] s = s
+    replacePrint' (c:cs) !s
+      | (c == '[') || (c == ']') = replacePrint' cs s
+      | c == ','                 = replacePrint' cs (" " ++ s)
+      | otherwise                = replacePrint' cs (c:s)
+
+
 
 prettyPrint :: Board -> IO ()
 prettyPrint b
