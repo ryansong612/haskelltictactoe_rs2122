@@ -182,7 +182,7 @@ main
 
 -------------------------------------------------------------------
 
-testBoard1, testBoard2, testBoard3, testBoard4, testBoard5 :: Board
+testBoard1, testBoard2, testBoard3, testBoard4, testBoard5, testBoard6 :: Board
 
 testBoard1
   = ([Taken O,Taken X,Empty,Taken O,
@@ -214,4 +214,10 @@ testBoard5
   = ([Taken O, Taken O, Empty,
       Taken X, Taken X, Taken X,
       Taken X, Taken O, Taken O],
+      3)
+
+testBoard6
+  = ([Empty, Empty, Empty,
+      Empty, Empty, Empty,
+      Empty, Empty, Empty],
       3)
