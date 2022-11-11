@@ -73,7 +73,7 @@ gameOver :: Board -> Bool
 gameOver b = any check lines
   where
     check (Empty : _) = False
-    check ls = (null . tail . nub) ls
+    check l = (null . tail . nub) l
     lines = rows b ++ cols b ++ diags b
   
 -------------------------------------------------------------------
@@ -175,8 +175,13 @@ main
       putStrLn "Please enter the board size: "
       size' <- getLine
       let size  = (read size' :: Int)
-          board@(b, s) = (replicate (size * size) Empty, size)
-      playGame board X
+      if size > 0 then
+        do
+          let board@(b, s) = (replicate (size * size) Empty, size)
+          playGame board X
+      else do
+        putStrLn "Invalid input, try again"
+        main
 
 
 
